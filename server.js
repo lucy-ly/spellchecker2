@@ -3,16 +3,19 @@ const users = require("./data.js");
 const getemail = require("./getemail.js");
 const app = express(); // callback function that creates an app object
 
-console.log(users);
+// console.log(users);
+// console.log("Email:", getemail(users, "Jason"));
 
-console.log("Email:", getemail(users, "Jason"));
+app.use(express.static("public")); // serves the public folder, will look for index.html and serve it 
 
 app.get("/getemail", (req, res) => { // this is a route 
     const name = req.query.name; // this is how you query a server for their data
+    const phone = req.query.phone;
     const email = getemail(users, name);
-    res.send(email);
+    res.send("Your email is: " + email + " and your phone is: " + phone);
 });
 
+// get user by index
 app.get("/getuser", (req, res) => { // this is a route 
     const index = req.query.index; // this is how you query a server for their data
     const oneUser = users[index]; // you get the user object, user[index] is taking one of the objects (name:'Jason')
