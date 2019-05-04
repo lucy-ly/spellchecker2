@@ -1,12 +1,12 @@
 /*global fetch*/
-function handleClick() {
+function handleClick(){
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
-
+  
   console.log(name);
-  fetch("/getemail" + "?" + "name=" + name + "&" + "phone=" + phone)
-    .then(response => response.text())
-    .then(function(response) {
+  fetch("/getemail" + "?" +"name=" + name + "&" + "phone=" + phone)
+    .then(response=>response.text())
+    .then(function(response){
       console.log(response);
       document.getElementById("results").innerHTML = response;
     });
